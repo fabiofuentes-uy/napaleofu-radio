@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Napaleofú Radio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#020914;--blue:#079cff;--cyan:#00c8ff;--white:#f7fbff;--muted:#b9c8d8;--line:rgba(0,180,255,.35);--green:#1ee26d}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Montserrat',Arial,sans-serif;background:radial-gradient(circle at top,#06203a 0,#020914 34%,#01050d 100%);color:var(--white);line-height:1.45}
+    a{color:inherit;text-decoration:none}.wrap{max-width:1180px;margin:auto;padding:0 22px}
+    .hero{position:relative;min-height:430px;overflow:hidden;background:linear-gradient(90deg,rgba(2,9,20,.96) 0%,rgba(2,9,20,.78) 42%,rgba(2,9,20,.28) 78%,rgba(2,9,20,.12)),url('assets/image-001.jpg');background-size:cover;background-position:center 47%;display:flex;align-items:center}
+    .hero:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,9,20,.98) 0%,rgba(2,9,20,.18) 42%,rgba(2,9,20,.12) 100%);pointer-events:none}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:55px 0 105px}
+    .script{font-family:'Pacifico',cursive;color:#04c9ff;font-size:clamp(48px,7vw,88px);line-height:.75;text-shadow:0 0 18px rgba(0,200,255,.38)}
+    .hero h1{font-size:clamp(62px,9vw,118px);line-height:.9;font-weight:900;letter-spacing:1px;text-shadow:0 8px 22px rgba(0,0,0,.55)}
+    .hero p{font-size:clamp(20px,2.7vw,30px);margin-top:20px;font-weight:500}.blue{color:var(--cyan)}
+    .hero-line{width:min(520px,100%);height:1px;background:rgba(255,255,255,.34);margin:22px 0 13px}
+    .location-link{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
+    main{margin-top:-72px;position:relative;z-index:4}
+    .player-card{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(5,20,38,.98),rgba(7,54,83,.93) 48%,rgba(5,20,38,.98));border:1px solid var(--line);border-radius:24px;padding:26px;display:grid;grid-template-columns:220px minmax(0,1fr) 230px;gap:28px;box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 30px rgba(0,150,255,.13)}
+    .cover{height:220px;border-radius:18px;background:linear-gradient(160deg,#fff,#dff6ff 45%,#93dcff);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 20px 36px rgba(0,0,0,.28)}
+    .cover img{width:88%;height:88%;object-fit:contain}
+    .player-info{display:flex;flex-direction:column;justify-content:center;min-width:0}
+    .live-row{display:flex;align-items:center;gap:24px;margin-bottom:19px}
+    .live{display:inline-flex;align-items:center;gap:7px;background:#a60e14;color:white;padding:7px 15px;border-radius:20px;font-size:13px;font-weight:800;white-space:nowrap;box-shadow:0 0 15px rgba(255,35,40,.25)}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:pulseLive 1s infinite}
+    @keyframes pulseLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+    .player-info h2{font-size:clamp(28px,4vw,44px);line-height:1.02;margin:10px 0 8px;font-weight:900}
+    .player-info p{max-width:560px;color:#dff2ff;font-size:16px}
+    .equalizer{display:flex;align-items:end;gap:6px;height:42px;margin:22px 0 18px}
+    .equalizer span{width:9px;border-radius:999px;background:linear-gradient(#ffe26d,#00d4ff);box-shadow:0 0 14px rgba(0,212,255,.45);animation:schoolEqualizer 1.15s ease-in-out infinite}
+    .equalizer span:nth-child(1){height:18px}.equalizer span:nth-child(2){height:30px;animation-delay:.08s}.equalizer span:nth-child(3){height:24px;animation-delay:.16s}.equalizer span:nth-child(4){height:38px;animation-delay:.24s}.equalizer span:nth-child(5){height:20px;animation-delay:.32s}.equalizer span:nth-child(6){height:34px;animation-delay:.4s}.equalizer span:nth-child(7){height:26px;animation-delay:.48s}
+    @keyframes schoolEqualizer{0%,100%{transform:scaleY(.58);opacity:.75}50%{transform:scaleY(1);opacity:1}}
+    .audio-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap}
+    .play-button{flex:0 0 76px;width:76px;height:76px;border-radius:50%;border:none;background:linear-gradient(135deg,#ff4fb8,#ffce47 54%,#00c8ff);color:white;font-size:29px;cursor:pointer;box-shadow:0 14px 30px rgba(0,0,0,.28),0 0 24px rgba(255,206,71,.26)}
+    .audio-shell{flex:1;min-width:0;border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:12px 14px;background:rgba(255,255,255,.085);backdrop-filter:blur(8px)}
+    .audio-label{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;color:#fff;font-size:13px}.audio-label span{color:#bdeaff;font-weight:700}
+    .audio-shell audio{display:none}.audio-status{display:flex;align-items:center;gap:12px;min-height:38px;border-radius:999px;padding:0 15px;background:rgba(255,255,255,.92);color:#163047;font-size:13px;font-weight:800}
+    .audio-status:before{content:"";width:10px;height:10px;border-radius:50%;background:#9aa9b7;box-shadow:0 0 0 4px rgba(154,169,183,.2)}
+    .audio-status.playing:before{background:#00c8ff;box-shadow:0 0 0 4px rgba(0,200,255,.18),0 0 14px rgba(0,200,255,.55)}
+    .audio-meter{flex:1;height:6px;border-radius:999px;overflow:hidden;background:#c5d1dc}.audio-meter span{display:block;width:38%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ffce47,#00c8ff);transform-origin:left center}
+    .audio-status.playing .audio-meter span{animation:meterPulse 1.15s ease-in-out infinite}@keyframes meterPulse{0%,100%{transform:scaleX(.35)}50%{transform:scaleX(1)}}
+    .connect{border-left:1px solid rgba(255,255,255,.2);padding-left:28px;display:flex;flex-direction:column;justify-content:center;gap:14px}.connect h3{font-size:13px;font-weight:800;margin-bottom:4px}
+    .btn{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--blue);border-radius:11px;min-height:48px;padding:11px 14px;background:rgba(255,255,255,.035);font-weight:800;transition:.2s;text-align:center;white-space:nowrap}.btn:hover{background:rgba(0,150,255,.12);transform:translateY(-1px)}.btn svg{width:21px;height:21px;flex:0 0 21px}.whatsapp{border-color:var(--green)}.whatsapp svg{fill:var(--green)}.facebook svg{fill:#1877f2}.instagram svg{fill:#e4405f}.share svg{fill:#fff}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}.card{background:rgba(5,20,38,.9);border:1px solid rgba(0,180,255,.25);border-radius:16px;padding:22px;display:flex;flex-direction:column;min-height:430px}.card h3{font-size:17px;margin-bottom:20px;font-weight:900}.card-content{flex:1}.item{display:flex;gap:15px;margin-bottom:18px;align-items:flex-start}.time{color:#00aaff;font-weight:900;min-width:48px;font-size:14px}.item strong,.podcast strong,.plus strong{font-size:14px}.item small,.podcast small,.plus small{color:var(--muted);font-size:11px}.plus small a{color:#4bd7ff;text-decoration:underline}
+    .podcast{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.055);padding:10px;border-radius:11px;margin-bottom:12px;min-height:78px}.podcast img{width:66px;height:58px;object-fit:cover;border-radius:8px;flex:0 0 66px}.podcast .play-mini{position:relative;margin-left:auto;border:0;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 38px;background:linear-gradient(145deg,#fff07a 0%,#35d6ff 52%,#0b65ff 100%);color:white;cursor:pointer;box-shadow:inset 0 2px 3px rgba(255,255,255,.65),inset 0 -6px 10px rgba(0,41,98,.32),0 10px 18px rgba(0,0,0,.35),0 0 16px rgba(0,200,255,.26);text-shadow:0 1px 2px rgba(0,0,0,.35);transform:translateY(0);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}.podcast .play-mini::before{content:"";position:absolute;inset:5px 8px 20px;border-radius:50%;background:rgba(255,255,255,.34);filter:blur(.2px);pointer-events:none}.podcast .play-mini:hover{transform:translateY(-2px) scale(1.04);filter:saturate(1.12);box-shadow:inset 0 2px 3px rgba(255,255,255,.72),inset 0 -7px 11px rgba(0,41,98,.32),0 14px 24px rgba(0,0,0,.42),0 0 22px rgba(0,200,255,.4)}.podcast .play-mini:active{transform:translateY(1px) scale(.98);box-shadow:inset 0 2px 8px rgba(0,0,0,.28),0 6px 12px rgba(0,0,0,.34)}
+    .plus{background:rgba(255,255,255,.055);padding:13px;border-radius:11px;margin-bottom:11px;display:flex;gap:12px;align-items:center;min-height:71px}.plus .emoji{font-size:23px;width:28px;text-align:center;flex:0 0 28px}
+    .gallery{margin-top:36px}.gallery h3{font-size:19px;margin-bottom:15px;font-weight:900}.gallery-carousel{position:relative}.photos{display:flex;gap:13px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 54px 12px;scrollbar-width:thin}.photos button{border:none;background:transparent;cursor:pointer;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.17);box-shadow:0 10px 20px rgba(0,0,0,.22);flex:0 0 clamp(230px,28vw,330px);height:186px;scroll-snap-align:center}.photos img{width:100%;height:100%;object-fit:cover;display:block;transition:.25s}.photos button:hover img{transform:scale(1.055)}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.32);background:rgba(6,24,44,.88);color:#fff;font-size:24px;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.28)}.prev-gallery{left:6px}.next-gallery{right:6px}
+    .banner{margin-top:33px;background:linear-gradient(90deg,#0966b2,#052648 70%,#04182e);border:1px solid rgba(0,180,255,.22);border-radius:16px;padding:28px 34px;display:grid;grid-template-columns:auto 1fr 300px 360px;align-items:center;gap:26px;overflow:hidden}.radio-icon svg{width:68px;height:68px;fill:#168cff;filter:drop-shadow(0 0 10px rgba(0,160,255,.3))}.banner h2{font-size:27px;font-weight:900}.banner p{font-size:15px;font-weight:600}.banner-wave svg{width:285px;height:70px}.banner-wave path{fill:none;stroke:#00c8ff;stroke-width:3.2;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(0,200,255,.45))}.thanks{font-family:'Pacifico',cursive;color:#00d0ff;font-size:34px;text-align:right;white-space:nowrap;text-shadow:0 0 15px rgba(0,200,255,.3)}
+    footer{max-width:1136px;width:calc(100% - 44px);margin:33px auto 34px;padding:28px;border:1px solid rgba(42,136,205,.36);border-radius:14px;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:28px;background:#06182b;color:#dbe8f5;align-items:center}.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:58px;height:58px;border-radius:50%;object-fit:contain;background:white;padding:3px}.footer-brand h3{font-size:22px;font-weight:900;text-transform:uppercase}.footer-brand small{display:block;margin-top:4px;color:#00d0ff;font-size:10px;font-weight:800}.footer-contact h3,.footer-school h3{font-size:15px;font-weight:900;margin-bottom:10px}.footer-contact{display:flex;flex-direction:column;gap:12px}.footer-socials{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.footer-socials a,.footer-web{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:900}.footer-socials svg,.footer-web svg{width:16px;height:16px;flex:0 0 16px}.footer-school{justify-self:end}.footer-school p{margin-top:0;color:#d7e9fb;font-size:13px;line-height:1.35}.copyright{color:#fff}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:99;display:none;align-items:center;justify-content:center;padding:28px}.modal.open{display:flex}.modal-card{position:relative;max-width:min(94vw,1180px);max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:14px}.modal img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:14px;box-shadow:0 0 40px rgba(0,0,0,.55)}.close-btn{border:1px solid #00aaff;border-radius:999px;background:#06182c;color:white;padding:11px 22px;font-weight:900;cursor:pointer}.nav-photo{position:absolute;top:45%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(6,24,44,.82);color:white;font-size:24px;cursor:pointer}.prev{left:-58px}.next{right:-58px}
+    @media(max-width:1020px){.player-card{grid-template-columns:190px 1fr}.cover{height:190px}.connect{grid-column:1/-1;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding-left:0;padding-top:18px;display:grid;grid-template-columns:repeat(4,1fr)}.connect h3{grid-column:1/-1}.banner{grid-template-columns:auto 1fr}.thanks,.banner-wave{grid-column:1/-1;text-align:left}}
+    @media(max-width:820px){.hero{min-height:390px}.player-card,.cards,footer{grid-template-columns:1fr}.cover{height:210px}.audio-row{flex-wrap:wrap}.audio-shell{flex-basis:100%}.audio-label{flex-direction:column;gap:2px}.connect{grid-template-columns:1fr}.photos{padding-inline:46px}.photos button{flex-basis:78vw;height:190px}.banner{grid-template-columns:1fr;text-align:left}.thanks{font-size:28px;white-space:normal}.prev{left:8px}.next{right:8px}.footer-school{justify-self:start}}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="script">La voz de</div>
+      <h1>NAPALEOFÚ</h1>
+      <p>Emitiendo <span class="blue">en vivo</span> para todo el mundo</p>
+      <div class="hero-line"></div>
+      <a class="location-link" href="https://maps.app.goo.gl/yiN55MiQH1yJmEod8" target="_blank" rel="noopener">Escuela Secundaria N°1 Napaleofú</a>
+    </div>
+  </section>
+  <main class="wrap">
+    <section class="player-card">
+      <div class="cover"><img src="assets/image-002.png" alt="Logo Radio Podcast Napaleofú"></div>
+      <div class="player-info">
+        <div class="live-row"><span class="live"><span class="live-dot"></span> EN VIVO</span></div>
+        <h2>Napaleofú Radio</h2>
+        <p>La voz de la Escuela, las familias y la comunidad.</p>
+        <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="audio-row">
+          <button class="play-button" type="button" onclick="toggleAudio()" aria-label="Reproducir o pausar la radio">▶</button>
+          <div class="audio-shell">
+            <div class="audio-label"><strong>Transmisión en vivo</strong><span>Escuchanos online</span></div>
+            <div class="audio-status" id="radioStatus"><span>Listo para reproducir</span><div class="audio-meter" aria-hidden="true"><span></span></div></div>
+            <audio id="radio" preload="none"><source src="http://logger1.mediainbox.net:10000/b7x1v3sz.mp3" type="audio/mpeg">Tu navegador no soporta audio HTML5.</audio>
+          </div>
+        </div>
+      </div>
+      <div class="connect">
+        <h3>CONECTATE</h3>
+        <a class="btn whatsapp" href="https://wa.me/5492261415095" target="_blank" rel="noopener">WhatsApp<br>+54 9 2261 415 095</a>
+        <a class="btn facebook" href="https://www.facebook.com/profile.php?id=100063140923523" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn instagram" href="https://www.instagram.com/eesn1napaleofu/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn share" href="#" onclick="shareSite();return false;">Compartir</a>
+      </div>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <h3>📅 PROGRAMACIÓN</h3>
+        <div class="card-content">
+          <div class="item"><div class="time">09:00</div><div><strong>Música y Compañía</strong><br><small>Buena música para empezar el día</small></div></div>
+          <div class="item"><div class="time">11:00</div><div><strong>Notas Históricas</strong><br><small>Nuestra historia, nuestra identidad</small></div></div>
+          <div class="item"><div class="time">16:00</div><div><strong>Sueños de Radio</strong><br><small>El programa ganador de Sueños de Radio</small></div></div>
+          <div class="item"><div class="time">18:00</div><div><strong>Entrevistas de Napa</strong><br><small>Voces de nuestra comunidad</small></div></div>
+          <div class="item"><div class="time">20:00</div><div><strong>Programación Musical</strong><br><small>Los clásicos de siempre</small></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🎙️ PODCAST DESTACADOS</h3>
+        <div class="card-content">
+          <div class="podcast"><img src="assets/image-003.jpg" alt=""><div><strong>Desde Napa al Mundo</strong><br><small>Escuchá nuestro Podcast ganador</small></div><button class="play-mini" type="button" onclick="openPodcastAudio()" aria-label="Escuchar podcast Desde Napa al Mundo">▶</button></div>
+          <div class="podcast"><img src="assets/image-004.jpg" alt=""><div><strong>La Voz del Campo</strong><br><small>Historias que nos conectan · 32:08</small></div><span class="play-mini">▶</span></div>
+          <div class="podcast"><img src="assets/image-005.jpg" alt=""><div><strong>Entrevista de Cadena 3</strong><br><small>Nuestro paso por Cadena 3 · 28:15 minutos</small></div><button class="play-mini" type="button" onclick="openDriveAudio('https://drive.google.com/file/d/1ukWPdGSdugL9reQkb_j1xDqtXEWL5_5P/view','entrevistaCadena3')" aria-label="Escuchar Entrevista de Cadena 3">▶</button></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>♡ SOMOS MÁS QUE RADIO</h3>
+        <div class="card-content">
+          <div class="plus"><div class="emoji">📝</div><div><strong>Participá de la construcción de nuestra nueva grilla de contenidos.</strong><br><small>Hacé click aquí: <a href="https://shorturl.at/kFDhw" target="_blank" rel="noopener">https://shorturl.at/kFDhw</a></small></div></div>
+          <div class="plus"><div class="emoji">🎙️</div><div><strong>Producción 100% estudiantil</strong><br><small>Contenido hecho por y para estudiantes</small></div></div>
+          <div class="plus"><div class="emoji">🤝</div><div><strong>Cooperativa escolar</strong><br><small>Aprendemos trabajando juntos</small></div></div>
+          <div class="plus"><div class="emoji">🏆</div><div><strong>Ganadores de Sueños de Radio</strong><br><small>Orgullosos representantes de Napaleofú a nivel País, Ganadores de Sueños de Radio edición 2025. Escuchanos <a href="https://drive.google.com/file/d/1ukWPdGSdugL9reQkb_j1xDqtXEWL5_5P/view" onclick="window.open(this.href,'suenosRadio2025','width=980,height=720,noopener');return false;" rel="noopener">aquí</a>.</small></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="gallery">
+      <h3>📷 LA RADIO EN IMÁGENES</h3>
+      <div class="gallery-carousel">
+        <button class="carousel-btn prev-gallery" type="button" onclick="slideGallery(-1)" aria-label="Fotos anteriores">‹</button>
+        <div class="photos" id="galleryTrack">
+          <button onclick="openPhoto(0)"><img src="assets/image-003.jpg" alt="Foto de la radio escolar"></button>
+          <button onclick="openPhoto(1)"><img src="assets/image-004.jpg" alt="Foto de la radio escolar"></button>
+          <button onclick="openPhoto(2)"><img src="assets/image-005.jpg" alt="Foto de la radio escolar"></button>
+          <button onclick="openPhoto(3)"><img src="assets/image-008.jpg" alt="Foto de estudiantes en la radio"></button>
+          <button onclick="openPhoto(4)"><img src="assets/image-009.jpg" alt="Foto de estudiantes grabando radio"></button>
+        </div>
+        <button class="carousel-btn next-gallery" type="button" onclick="slideGallery(1)" aria-label="Fotos siguientes">›</button>
+      </div>
+    </section>
+    <section class="banner">
+      <div class="radio-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-6.36 15.36l1.42-1.42A7 7 0 1 1 17 16.94l1.41 1.42A9 9 0 0 0 12 3Zm0 4a5 5 0 0 0-3.54 8.54l1.42-1.42a3 3 0 1 1 4.24 0l1.42 1.42A5 5 0 0 0 12 7Zm0 4a1 1 0 1 0 .01 0Z"/></svg></div>
+      <div><h2>NAPALEOFÚ<br>RADIO</h2><p>La radio de nuestra Escuela,<br>la voz de nuestra comunidad.</p></div>
+      <div class="banner-wave"><svg viewBox="0 0 300 70" aria-hidden="true"><path d="M2 35 C22 35,22 18,42 18 S62 52,82 52 S102 18,122 18 S142 52,162 52 S182 18,202 18 S222 52,242 52 S262 35,298 35"/></svg></div>
+      <div class="thanks">¡Gracias por escucharnos!</div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-brand"><img src="assets/image-002.png" alt="Logo Napaleofú Radio"><div><h3>Napaleofú</h3><small>LA RADIO DE NUESTRA ESCUELA</small></div></div>
+    <div class="footer-contact">
+      <h3>CONECTATE CON NOSOTROS</h3>
+      <div class="footer-socials"><a class="whatsapp" href="https://wa.me/5492261415095" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.02 3.2A12.7 12.7 0 0 0 5.2 22.6L3.6 28.8l6.35-1.57A12.7 12.7 0 1 0 16.02 3.2zm0 22.9c-2.05 0-3.96-.6-5.56-1.65l-.4-.25-3.76.93 1-3.65-.27-.42a10.2 10.2 0 1 1 8.99 5.04zm5.85-7.65c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.15-.15.32-.38.48-.57.16-.19.22-.32.32-.54.11-.22.06-.4-.03-.57-.08-.16-.74-1.78-1.02-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4-.3.32-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.36c.16.22 2.3 3.52 5.58 4.93.78.34 1.39.54 1.87.69.78.25 1.49.21 2.05.13.63-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.14-.3-.22-.62-.38z"/></svg>WhatsApp</a><a class="facebook" href="https://www.facebook.com/profile.php?id=100063140923523" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"/></svg>Facebook</a><a class="instagram" href="https://www.instagram.com/eesn1napaleofu/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.1A4.9 4.9 0 1 0 12 17a4.9 4.9 0 0 0 0-9.9zm0 1.8A3.1 3.1 0 1 1 12 15.1 3.1 3.1 0 0 1 12 8.9zm5.15-2.75a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg>Instagram</a></div>
+      <a class="footer-web" href="https://napaleofu.net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .01 0ZM4.26 11a7.95 7.95 0 0 1 1.73-4.1A13.7 13.7 0 0 0 8.2 11H4.26Zm0 2H8.2a13.7 13.7 0 0 0-2.21 4.1A7.95 7.95 0 0 1 4.26 13ZM11 19.74A11.7 11.7 0 0 1 10.25 13h3.5A11.7 11.7 0 0 1 13 19.74a8.35 8.35 0 0 1-2 0ZM13.75 11h-3.5A11.7 11.7 0 0 1 11 4.26a8.35 8.35 0 0 1 2 0A11.7 11.7 0 0 1 13.75 11Zm4.26 6.1A13.7 13.7 0 0 0 15.8 13h3.94a7.95 7.95 0 0 1-1.73 4.1ZM15.8 11a13.7 13.7 0 0 0 2.21-4.1A7.95 7.95 0 0 1 19.74 11H15.8Z"/></svg>napaleofu.net</a>
+    </div>
+    <div class="footer-school"><h3>Escuela Secundaria N°1 Napaleofú</h3><p>Napaleofú, Buenos Aires, Argentina</p><p class="copyright">© 2026 Todos los derechos reservados</p></div>
+  </footer>
+  <div class="modal" id="photoModal" onclick="if(event.target===this)closePhoto()">
+    <div class="modal-card"><button class="nav-photo prev" type="button" onclick="movePhoto(-1)" aria-label="Foto anterior">‹</button><img id="modalPhoto" src="" alt="Foto de la radio escolar"><button class="nav-photo next" type="button" onclick="movePhoto(1)" aria-label="Foto siguiente">›</button><button class="close-btn" type="button" onclick="closePhoto()">Cerrar</button></div>
+  </div>
+  <script>
+    const galleryPhotos=['assets/image-003.jpg','assets/image-004.jpg','assets/image-005.jpg','assets/image-008.jpg','assets/image-009.jpg'];
+    let currentPhoto=0;
+    function slideGallery(direction){const track=document.getElementById('galleryTrack');if(!track)return;const card=track.querySelector('button');const step=card?card.getBoundingClientRect().width+13:320;track.scrollBy({left:direction*step,behavior:'smooth'});}
+    function openPhoto(index){currentPhoto=index;const modal=document.getElementById('photoModal');const photo=document.getElementById('modalPhoto');if(!modal||!photo)return;photo.src=galleryPhotos[currentPhoto]||galleryPhotos[0];modal.classList.add('open');}
+    function closePhoto(){document.getElementById('photoModal')?.classList.remove('open');}
+    function movePhoto(step){if(!galleryPhotos.length)return;currentPhoto=(currentPhoto+step+galleryPhotos.length)%galleryPhotos.length;openPhoto(currentPhoto);}
+    function setRadioStatus(text,playing){const status=document.getElementById('radioStatus');if(!status)return;status.classList.toggle('playing',!!playing);const label=status.querySelector('span');if(label)label.textContent=text;}
+    function pauseRadioForPodcast(){const radio=document.getElementById('radio');const button=document.querySelector('.play-button');if(radio&&!radio.paused)radio.pause();if(button)button.textContent='▶';setRadioStatus('Radio pausada por podcast',false);}function openDriveAudio(url,name){pauseRadioForPodcast();window.open(url,name,'width=980,height=720,noopener');}function openPodcastAudio(){openDriveAudio('https://drive.google.com/file/d/1phHOnxXigWfqpwOcV54iMip9sil7Oa8N/view','podcastDesdeNapa');}
+    function toggleAudio(){const audio=document.getElementById('radio');const button=document.querySelector('.play-button');if(!audio||!button)return;if(audio.paused){audio.play().then(()=>{button.textContent='❚❚';setRadioStatus('Reproduciendo en vivo',true);}).catch(()=>setRadioStatus('No se pudo iniciar',false));}else{audio.pause();button.textContent='▶';setRadioStatus('Pausado',false);}}
+    function shareSite(){const shareData={title:'Napaleofú Radio',text:'Escuchá Napaleofú Radio en vivo',url:location.href};if(navigator.share){navigator.share(shareData).catch(()=>{});}else{navigator.clipboard?.writeText(location.href);}}
+    document.addEventListener('DOMContentLoaded',()=>{const audio=document.getElementById('radio');const button=document.querySelector('.play-button');if(audio&&button){audio.addEventListener('play',()=>{button.textContent='❚❚';setRadioStatus('Reproduciendo en vivo',true);});audio.addEventListener('pause',()=>{button.textContent='▶';setRadioStatus('Pausado',false);});}});
+  </script>
+</body>
+</html>
