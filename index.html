@@ -19,16 +19,17 @@
     .hero h1{font-size:clamp(62px,9vw,118px);line-height:.9;font-weight:900;letter-spacing:1px;text-shadow:0 8px 22px rgba(0,0,0,.55)}
     .hero p{font-size:clamp(20px,2.7vw,30px);margin-top:20px;font-weight:500}.blue{color:var(--cyan)}
     .hero-line{width:min(520px,100%);height:1px;background:rgba(255,255,255,.34);margin:22px 0 13px}
-    .location-link{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
+    .location-link{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:700}.location-link svg{width:20px;height:20px;flex:0 0 20px;fill:#ff4b55;filter:drop-shadow(0 0 8px rgba(255,75,85,.58))}
     main{margin-top:-72px;position:relative;z-index:4}
     .player-card{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(5,20,38,.98),rgba(7,54,83,.93) 48%,rgba(5,20,38,.98));border:1px solid var(--line);border-radius:24px;padding:26px;display:grid;grid-template-columns:220px minmax(0,1fr) 230px;gap:28px;box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 30px rgba(0,150,255,.13)}
     .cover{height:220px;border-radius:18px;background:linear-gradient(160deg,#fff,#dff6ff 45%,#93dcff);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 20px 36px rgba(0,0,0,.28)}
     .cover img{width:88%;height:88%;object-fit:contain}
     .player-info{display:flex;flex-direction:column;justify-content:center;min-width:0}
     .live-row{display:flex;align-items:center;gap:24px;margin-bottom:19px}
-    .live{display:inline-flex;align-items:center;gap:7px;background:#a60e14;color:white;padding:7px 15px;border-radius:20px;font-size:13px;font-weight:800;white-space:nowrap;box-shadow:0 0 15px rgba(255,35,40,.25)}
-    .live-dot{width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:pulseLive 1s infinite}
-    @keyframes pulseLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+    .live{position:relative;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ff111b,#8c0008);color:white;padding:9px 18px;border:1px solid rgba(255,255,255,.28);border-radius:22px;font-size:13px;font-weight:900;letter-spacing:.3px;white-space:nowrap;box-shadow:0 0 20px rgba(255,20,30,.75),0 0 42px rgba(255,0,0,.35),inset 0 0 12px rgba(255,255,255,.18);animation:liveGlow 1.15s ease-in-out infinite}
+    .live:before{content:"";position:absolute;inset:-8px;border-radius:999px;background:rgba(255,0,0,.28);filter:blur(10px);z-index:-1;animation:liveHalo 1.15s ease-in-out infinite}
+    .live-dot{width:10px;height:10px;border-radius:50%;background:#fff;display:inline-block;box-shadow:0 0 12px #fff,0 0 22px #ff161f;animation:pulseLive .8s infinite}
+    @keyframes pulseLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.38;transform:scale(.7)}}@keyframes liveGlow{0%,100%{transform:translateY(0);box-shadow:0 0 20px rgba(255,20,30,.75),0 0 42px rgba(255,0,0,.35),inset 0 0 12px rgba(255,255,255,.18)}50%{transform:translateY(-1px);box-shadow:0 0 30px rgba(255,40,45,.98),0 0 68px rgba(255,0,0,.58),inset 0 0 16px rgba(255,255,255,.24)}}@keyframes liveHalo{0%,100%{opacity:.55;transform:scale(.98)}50%{opacity:1;transform:scale(1.08)}}
     .player-info h2{font-size:clamp(28px,4vw,44px);line-height:1.02;margin:10px 0 8px;font-weight:900}
     .player-info p{max-width:560px;color:#dff2ff;font-size:16px}
     .equalizer{display:flex;align-items:end;gap:6px;height:42px;margin:22px 0 18px}
@@ -45,7 +46,7 @@
     .audio-meter{flex:1;height:6px;border-radius:999px;overflow:hidden;background:#c5d1dc}.audio-meter span{display:block;width:38%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ffce47,#00c8ff);transform-origin:left center}
     .audio-status.playing .audio-meter span{animation:meterPulse 1.15s ease-in-out infinite}@keyframes meterPulse{0%,100%{transform:scaleX(.35)}50%{transform:scaleX(1)}}
     .connect{border-left:1px solid rgba(255,255,255,.2);padding-left:28px;display:flex;flex-direction:column;justify-content:center;gap:14px}.connect h3{font-size:13px;font-weight:800;margin-bottom:4px}
-    .btn{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--blue);border-radius:11px;min-height:48px;padding:11px 14px;background:rgba(255,255,255,.035);font-weight:800;transition:.2s;text-align:center;white-space:nowrap}.btn:hover{background:rgba(0,150,255,.12);transform:translateY(-1px)}.btn svg{width:21px;height:21px;flex:0 0 21px}.whatsapp{border-color:var(--green)}.whatsapp svg{fill:var(--green)}.facebook svg{fill:#1877f2}.instagram svg{fill:#e4405f}.share svg{fill:#fff}
+    .btn{display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--blue);border-radius:11px;min-height:48px;padding:11px 14px;background:rgba(255,255,255,.035);font-weight:800;transition:.2s;text-align:center;white-space:nowrap}.btn:hover{background:rgba(0,150,255,.12);transform:translateY(-1px)}.btn svg{width:22px;height:22px;flex:0 0 22px}.whatsapp{border-color:var(--green)}.whatsapp svg{fill:var(--green)}.facebook svg{fill:#1877f2}.instagram svg{fill:#e4405f}.share svg{fill:#fff}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}.card{background:rgba(5,20,38,.9);border:1px solid rgba(0,180,255,.25);border-radius:16px;padding:22px;display:flex;flex-direction:column;min-height:430px}.card h3{font-size:17px;margin-bottom:20px;font-weight:900}.card-content{flex:1}.item{display:flex;gap:15px;margin-bottom:18px;align-items:flex-start}.time{color:#00aaff;font-weight:900;min-width:48px;font-size:14px}.item strong,.podcast strong,.plus strong{font-size:14px}.item small,.podcast small,.plus small{color:var(--muted);font-size:11px}.plus small a{color:#4bd7ff;text-decoration:underline}
     .podcast{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.055);padding:10px;border-radius:11px;margin-bottom:12px;min-height:78px}.podcast img{width:66px;height:58px;object-fit:cover;border-radius:8px;flex:0 0 66px}.podcast .play-mini{position:relative;margin-left:auto;border:0;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 38px;background:linear-gradient(145deg,#fff07a 0%,#35d6ff 52%,#0b65ff 100%);color:white;cursor:pointer;box-shadow:inset 0 2px 3px rgba(255,255,255,.65),inset 0 -6px 10px rgba(0,41,98,.32),0 10px 18px rgba(0,0,0,.35),0 0 16px rgba(0,200,255,.26);text-shadow:0 1px 2px rgba(0,0,0,.35);transform:translateY(0);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}.podcast .play-mini::before{content:"";position:absolute;inset:5px 8px 20px;border-radius:50%;background:rgba(255,255,255,.34);filter:blur(.2px);pointer-events:none}.podcast .play-mini:hover{transform:translateY(-2px) scale(1.04);filter:saturate(1.12);box-shadow:inset 0 2px 3px rgba(255,255,255,.72),inset 0 -7px 11px rgba(0,41,98,.32),0 14px 24px rgba(0,0,0,.42),0 0 22px rgba(0,200,255,.4)}.podcast .play-mini:active{transform:translateY(1px) scale(.98);box-shadow:inset 0 2px 8px rgba(0,0,0,.28),0 6px 12px rgba(0,0,0,.34)}
     .plus{background:rgba(255,255,255,.055);padding:13px;border-radius:11px;margin-bottom:11px;display:flex;gap:12px;align-items:center;min-height:71px}.plus .emoji{font-size:23px;width:28px;text-align:center;flex:0 0 28px}
@@ -65,7 +66,7 @@
       <h1>NAPALEOFÚ</h1>
       <p>Emitiendo <span class="blue">en vivo</span> para todo el mundo</p>
       <div class="hero-line"></div>
-      <a class="location-link" href="https://maps.app.goo.gl/yiN55MiQH1yJmEod8" target="_blank" rel="noopener">Escuela Secundaria N°1 Napaleofú</a>
+      <a class="location-link" href="https://maps.app.goo.gl/yiN55MiQH1yJmEod8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2Z"/></svg>Escuela Secundaria N°1 Napaleofú</a>
     </div>
   </section>
   <main class="wrap">
@@ -87,10 +88,10 @@
       </div>
       <div class="connect">
         <h3>CONECTATE</h3>
-        <a class="btn whatsapp" href="https://wa.me/5492261415095" target="_blank" rel="noopener">WhatsApp<br>+54 9 2261 415 095</a>
-        <a class="btn facebook" href="https://www.facebook.com/profile.php?id=100063140923523" target="_blank" rel="noopener">Facebook</a>
-        <a class="btn instagram" href="https://www.instagram.com/eesn1napaleofu/" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn share" href="#" onclick="shareSite();return false;">Compartir</a>
+        <a class="btn whatsapp" href="https://wa.me/5492261415095" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.02 3.2A12.7 12.7 0 0 0 5.2 22.6L3.6 28.8l6.35-1.57A12.7 12.7 0 1 0 16.02 3.2zm0 22.9c-2.05 0-3.96-.6-5.56-1.65l-.4-.25-3.76.93 1-3.65-.27-.42a10.2 10.2 0 1 1 8.99 5.04zm5.85-7.65c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.15-.15.32-.38.48-.57.16-.19.22-.32.32-.54.11-.22.06-.4-.03-.57-.08-.16-.74-1.78-1.02-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4-.3.32-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.36c.16.22 2.3 3.52 5.58 4.93.78.34 1.39.54 1.87.69.78.25 1.49.21 2.05.13.63-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.14-.3-.22-.62-.38z"/></svg><span>WhatsApp<br>+54 9 2261 415 095</span></a>
+        <a class="btn facebook" href="https://www.facebook.com/profile.php?id=100063140923523" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"/></svg><span>Facebook</span></a>
+        <a class="btn instagram" href="https://www.instagram.com/eesn1napaleofu/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.1A4.9 4.9 0 1 0 12 17a4.9 4.9 0 0 0 0-9.9zm0 1.8A3.1 3.1 0 1 1 12 15.1 3.1 3.1 0 0 1 12 8.9zm5.15-2.75a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg><span>Instagram</span></a>
+        <a class="btn share" href="#" onclick="shareSite();return false;"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.1c-1.02 0-1.93.5-2.49 1.27L8.91 13.5a3.16 3.16 0 0 0 0-2.99l6.53-3.83A3.1 3.1 0 1 0 14.5 4.5c0 .24.03.47.08.69L8.05 9.02a3.1 3.1 0 1 0 0 5.96l6.58 3.86A3.1 3.1 0 1 0 18 16.1Z"/></svg><span>Compartir</span></a>
       </div>
     </section>
     <section class="cards">
